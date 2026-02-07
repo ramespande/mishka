@@ -4,14 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const heartLayer = document.getElementById("heart-layer");
   const mainCard = document.getElementById("mainCard");
 
-  // Move "No"
+  const emojis = ["❤️", "💖", "💕", "💘", "💗"];
+
+  /* ❌ Move No button */
   noBtn.addEventListener("mouseover", () => {
     const x = Math.random() * 200 - 100;
     const y = Math.random() * 200 - 100;
     noBtn.style.transform = `translate(${x}px, ${y}px)`;
   });
 
-  // YES click
+  /* 💖 YES click → explosion */
   yesBtn.addEventListener("click", () => {
     mainCard.innerHTML = `
       <h1>YAYYYYY 🥹❤️</h1>
@@ -19,17 +21,31 @@ document.addEventListener("DOMContentLoaded", () => {
       <p>Happy Valentine’s Day 💘</p>
     `;
 
-    // HEART EXPLOSION
-    for (let i = 0; i < 100; i++) {
-      setTimeout(() => spawnHeart(), i * 15);
+    for (let i = 0; i < 90; i++) {
+      setTimeout(spawnBlastHeart, i * 20);
     }
   });
 
-  const emojis = ["❤️", "💖", "💕", "💘", "💗"];
-
-  function spawnHeart() {
+  /* 💕 Floating hearts (background) */
+  function spawnFloatHeart() {
     const heart = document.createElement("div");
-    heart.className = "heart";
+    heart.className = "float-heart";
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+
+    heartLayer.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }
+
+  setInterval(spawnFloatHeart, 500);
+
+  /* 💥 Explosion hearts */
+  function spawnBlastHeart() {
+    const heart = document.createElement("div");
+    heart.className = "blast-heart";
     heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
     const angle = Math.random() * Math.PI * 2;
