@@ -29,16 +29,16 @@ button {
   cursor: pointer;
 }
 
-#noBtn {
-  background: #ccc;
-}
-
 #yesBtn {
   background: #ff4d6d;
   color: white;
 }
 
-/* ❤️ Heart explosion layer */
+#noBtn {
+  background: #ccc;
+}
+
+/* ❤️ Heart layer */
 #heart-layer {
   position: fixed;
   inset: 0;
@@ -46,9 +46,29 @@ button {
   z-index: 10;
 }
 
-.heart {
+/* 💕 Floating hearts */
+.float-heart {
   position: absolute;
-  font-size: 28px;
+  bottom: -20px;
+  font-size: 22px;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+/* 💥 Blast hearts */
+.blast-heart {
+  position: absolute;
+  font-size: 26px;
   animation: explode 1.4s ease-out forwards;
 }
 
