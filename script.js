@@ -1,4 +1,3 @@
-// FORCE JS TO WAIT
 window.onload = () => {
   const yesBtn = document.getElementById("yesBtn");
   const noBtn = document.getElementById("noBtn");
@@ -7,7 +6,7 @@ window.onload = () => {
 
   const emojis = ["❤️", "💖", "💕", "💘", "💗"];
 
-  /* Floating hearts */
+  /* Floating hearts (background) */
   function spawnFloatHeart() {
     const h = document.createElement("div");
     h.className = "float-heart";
@@ -17,10 +16,9 @@ window.onload = () => {
     heartLayer.appendChild(h);
     setTimeout(() => h.remove(), 6000);
   }
-
   setInterval(spawnFloatHeart, 500);
 
-  /* No button */
+  /* No button chaos */
   noBtn.onmouseover = () => {
     noBtn.style.transform =
       `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)`;
@@ -31,9 +29,17 @@ window.onload = () => {
     mainCard.innerHTML = `
       <h1>YAYYYYY 🥹❤️</h1>
       <p>You just made me the happiest person alive.</p>
-      <p>Happy Valentine’s Day 💘</p>
+      <p>Some of my favorite memories with you 💕</p>
+
+      <div class="memory-grid">
+        <img src="photo1.jpg" alt="Memory 1">
+        <img src="photo2.jpg" alt="Memory 2">
+        <img src="photo3.jpg" alt="Memory 3">
+        <img src="photo4.jpg" alt="Memory 4">
+      </div>
     `;
 
+    // Heart explosion
     for (let i = 0; i < 80; i++) {
       setTimeout(spawnBlastHeart, i * 20);
     }
